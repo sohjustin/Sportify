@@ -1,0 +1,85 @@
+{% extends 'accounts/main.html' %}
+
+{% block content_block %}
+<br>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h5 style="text-align: center" class="top_card_info" >Customer</h5>
+        <hr>
+        <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'accounts:update_customer' customers.id %}">Update Customer</a>
+			  <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'accounts:delete_customer' customers.id %}">Delete Customer</a>
+      </div>
+    </div>
+    <div class="card col-md">
+      <div class="card-body">
+        <h5 style="text-align: center"> Contact Information</h5>
+        <hr>
+        <p>Email: {{customers.email}} </p>
+        <p>Phone: {{customers.phone}}</p>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card card-body card_information">
+        <h5 style="text-align: center">Total Order</h5>
+        <hr>
+        <h4 style="text-align: center">{{count_orders}}</h4>
+        <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'accounts:create_multiple_order' customers.id %}">Place Order</a>
+
+      </div>
+    </div>
+  </div>
+
+<br>
+
+  <div class="card">
+    <div class="card-body">
+
+      <form method="get">
+        {{myFilter.form}}
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    </div>
+  </div>
+
+<br>
+
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <table class="table table-sm">
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <!-- <th>Note</th>             -->
+            <th>Date Ordered</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Remove</th>
+          </tr>
+          {% for i in orders %}
+          <tr>
+            <td>{{i.product}}</td>
+            <td>{{i.product.category}}</td>
+            <!-- <td>{{i.note}}</td> -->
+            <td>{{i.date_created}}</td>
+            <td>{{i.status}}</td>
+            <td><a class="btn btn-sm btn-info"href="{% url 'accounts:update_order' i.id %}">Update</a></td>
+            <td><a class="btn btn-sm btn-danger"href="{% url 'accounts:delete_order' i.id%}">Delete</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+{% endblock %}

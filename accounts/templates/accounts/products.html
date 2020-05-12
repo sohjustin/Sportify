@@ -1,0 +1,55 @@
+{% extends 'accounts/main.html' %}
+
+{% block content_block %}
+<br>
+
+<div class="container-fluid">
+  <div class="card">
+    <div class = "row">
+      <div class = "col-md">
+          <div class = "card-header">
+            {% if request.user.is_staff %}
+            <a class = "btn btn-primary float-right" href="{% url 'accounts:create_product' %}">Create New Product</a>
+            {% endif %}
+              <h5>Products</h5>
+          </div>
+          <br>
+          <div class="card-body">
+
+            <form method="get">
+              {{myFilter.form}}
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+          </form>
+
+        </div>
+      <br>
+          <div class="card card-body">
+              <table class="table">
+                  <tr>
+                      <th>Product</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      {% if request.user.is_staff %}
+                      <th>Update</th>
+                      <th>Remove</th>
+                      {% endif %}
+                  </tr>
+
+                  {% for i in products %}
+                    <tr>
+                      <td>{{i.name}}</td>
+                      <td>{{i.category}}</td>
+                      <td>${{i.price}}</td>
+                      {% if request.user.is_staff %}
+                      <td><a class="btn btn-sm btn-info"href="{% url 'accounts:update_product' i.id %}">Update</a></td>
+                      <td><a class="btn btn-sm btn-danger"href="{% url 'accounts:delete_product' i.id %}">Delete</a></td>
+                      {% endif %}
+                    </tr>
+                  {% endfor %}
+              </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
