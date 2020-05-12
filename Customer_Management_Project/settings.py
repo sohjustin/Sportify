@@ -25,7 +25,7 @@ SECRET_KEY = 'y#tc_975np4z64od65f774b2pob4*)y0)27gc5(v5o#%*cn-s)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['sohjustin-crm-1.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['sohjustin-crm-2.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
