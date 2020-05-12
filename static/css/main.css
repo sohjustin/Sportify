@@ -1,0 +1,21 @@
+body{
+  background-color: #ebeff5;
+}
+
+#total_orders{
+  color: white;
+  background-color: #7aadcc;
+  text-align: center;
+}
+
+#orders_delivered{
+  color: white;
+  background-color: #7abecc;
+  text-align: center;
+}
+
+#orders_pending{
+  color: white;
+  background-color: #7CD1C0;
+  text-align: center;
+}
