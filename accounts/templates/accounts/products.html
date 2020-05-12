@@ -10,6 +10,8 @@
           <div class = "card-header">
             {% if request.user.is_staff %}
             <a class = "btn btn-primary float-right" href="{% url 'accounts:create_product' %}">Create New Product</a>
+            {% else %}
+            <a class = "btn btn-primary float-right" href="{% url 'accounts:create_order' %}">Order New Product</a>
             {% endif %}
               <h5>Products</h5>
           </div>
